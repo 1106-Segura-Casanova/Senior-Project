@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 
 // Register a new user
+// Got from Firebase https://github.com/firebase/snippets-web/blob/fbccd85f8f796d18ccf4b6b844298ccdfb4b772f/snippets/auth-next/email/auth_signup_password.js#L8-L14
 export async function registerUser(email, password) {
     const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -20,6 +21,7 @@ export async function registerUser(email, password) {
 }
 
 // Log in an existing user
+// Got from Firebase https://github.com/firebase/snippets-web/blob/fbccd85f8f796d18ccf4b6b844298ccdfb4b772f/snippets/auth-next/email/auth_signin_password.js#L8-L14
 export async function loginUser(email, password) {
     const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -31,10 +33,12 @@ export async function loginUser(email, password) {
 }
 
 // Log out the current user
+// Got from Firebase https://github.com/firebase/snippets-web/blob/fbccd85f8f796d18ccf4b6b844298ccdfb4b772f/snippets/auth-next/index/auth_sign_out.js#L8-L11
 export async function logoutUser() {
     await signOut(auth);
 }
 
+// Got from Chat 
 // Monitor whether a user is logged in or logged out
 export function subscribeToAuthChanges(callback) {
     return onAuthStateChanged(auth, callback);

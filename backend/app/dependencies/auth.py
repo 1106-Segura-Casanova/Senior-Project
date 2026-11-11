@@ -9,7 +9,8 @@ from app.models.user import User
 from app.services.firebase_service import verify_firebase_token
 
 security = HTTPBearer()
-
+# Recieved from FastAPI github at https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/security/tutorial004.py#L89-L106
+# Debugged with help from Chat gpt
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(security),
     db: Session = Depends(get_db),
@@ -39,6 +40,7 @@ def get_current_user(
         .filter(User.firebase_uid == firebase_uid)
         .first()
     )
+    #Taken from FastAPi github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/crud.py#L20-L21
     if user is None:
         user = User(
             firebase_uid=firebase_uid,

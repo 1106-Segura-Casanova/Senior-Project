@@ -1,4 +1,6 @@
 # Purpose: Allows Alembic to manage change to the database
+# Directly from Alembic. We added Base.metadata to line 17. And imported engine to put on line 20
+# github : https://github.com/sqlalchemy/alembic/blob/1bcba93ea0473c69b48e704f842ca96e9e5348f5/alembic/templates/generic/env.py#L10-L78
 
 from logging.config import fileConfig
 from alembic import context

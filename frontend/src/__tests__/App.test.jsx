@@ -1,5 +1,5 @@
 // Purpose: Unit Test for the react frontend
-
+// Written mostly from Chatgpt
 import {
     render,
     screen,

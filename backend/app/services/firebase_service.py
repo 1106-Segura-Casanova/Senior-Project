@@ -16,6 +16,7 @@ if not FIREBASE_PROJECT_ID:
     )
 
 # Initialize Firebase Admin using Google Application Default Credentials
+# Implemented from https://github.com/firebase/firebase-admin-python/blob/main/snippets/auth/index.py#L58-L61
 try:
     firebase_app = firebase_admin.get_app()
 except ValueError:

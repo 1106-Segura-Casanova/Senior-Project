@@ -1,5 +1,5 @@
 /* Purpose: control the appearance and layout of the frontend (UI) */
-
+/* Directly from vite github https://github.com/vitejs/vite/blob/e4ad62ba6523e889f988b6e882d9d81be7f26711/packages/create-vite/template-react/src/index.css#L1-L111*/
 :root {
   --text: #6b6375;
   --text-h: #08060d;

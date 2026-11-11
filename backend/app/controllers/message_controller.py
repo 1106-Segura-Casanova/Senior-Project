@@ -12,14 +12,17 @@ from app.schemas.message_schema import (
     MessageResponse,
 )
 
+# Implemented from FastAPI docs https://fastapi.tiangolo.com/tutorial/security/get-current-user/#get-the-user
 router = APIRouter(
     prefix="/api/messages",
     tags=["Messages"],
 )
 
 # CREATE
+# Implemented from FastAPI github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/main.py#L45
 @router.post("/", response_model=MessageResponse)
 def create_message(
+    # Implemented from FastAPI github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/main.py#L46-L48
     message: MessageCreate,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
@@ -28,7 +31,7 @@ def create_message(
         content=message.content,
         user_id=current_user.id,
     )
-
+    #Implemented from FastAPI github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/crud.py#L31-L36
     db.add(new_message)
     db.commit()
     db.refresh(new_message)
@@ -41,6 +44,7 @@ def get_messages(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+ #Implemented from FastAPI github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/crud.py#L28
     return (
         db.query(Message)
         .filter(Message.user_id == current_user.id)
@@ -54,15 +58,16 @@ def get_message(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+# FastAPI github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/crud.py#L7
     message = (
         db.query(Message)
         .filter(
             Message.id == message_id,
             Message.user_id == current_user.id,
         )
-        .first()
+        .first()https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/crud.py
     )
-
+# FastAPI docs Use HTTPException https://fastapi.tiangolo.com/tutorial/handling-errors/
     if message is None:
         raise HTTPException(
             status_code=404,
@@ -72,6 +77,7 @@ def get_message(
     return message
 
 # UPDATE OWN MESSAGE
+# Decorator line implemented from FastAPI github https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/body_updates/tutorial001.py#L30
 @router.put("/{message_id}", response_model=MessageResponse)
 def update_message(
     message_id: int,
@@ -93,7 +99,7 @@ def update_message(
             status_code=404,
             detail="Message not found",
         )
-
+# This we wrote
     message.content = updated_data.content
 
     db.commit()

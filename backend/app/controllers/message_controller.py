@@ -65,7 +65,7 @@ def get_message(
             Message.id == message_id,
             Message.user_id == current_user.id,
         )
-        .first()https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/sql_databases/sql_app/crud.py
+        .first()
     )
 # FastAPI docs Use HTTPException https://fastapi.tiangolo.com/tutorial/handling-errors/
     if message is None:

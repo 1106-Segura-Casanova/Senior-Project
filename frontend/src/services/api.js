@@ -1,5 +1,5 @@
 // Purpose: Handle communication between frontend and backend
-
+// rRecieved from Chatgpt
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 
 function getAuthHeaders(token, includeContentType = false) {

@@ -1,4 +1,6 @@
- # 1. Use Python as the container's operating environment
+# Chat gpt instructions for Fast api port integration to cloud run
+
+# 1. Use Python as the container's operating environment
 FROM python:3.14-slim
 
 # 2. Set the working directory inside the container

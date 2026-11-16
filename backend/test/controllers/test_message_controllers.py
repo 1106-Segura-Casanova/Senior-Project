@@ -73,7 +73,7 @@ def test_get_messages():
     mock_db.query.return_value.filter.return_value.all.return_value = [
         test_message
     ]
-
+# Implemented from FastAPI test https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/app_testing/app_b/test_main.py#L8-L15
     response = client.get("/api/messages/")
 
     assert response.status_code == 200
@@ -104,7 +104,7 @@ def test_create_message():
         message.id = 2
 
     mock_db.refresh.side_effect = mock_refresh
-
+# Took from FastAPI testing https://github.com/fastapi/fastapi/blob/0.110.0/docs_src/app_testing/app_b/test_main.py#L30-L41
     response = client.post(
         "/api/messages/",
         json={

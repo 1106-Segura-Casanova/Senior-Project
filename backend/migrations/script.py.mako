@@ -1,3 +1,4 @@
+##Directly from Alembic github : https://github.com/sqlalchemy/alembic/blob/1bcba93ea0473c69b48e704f842ca96e9e5348f5/alembic/templates/generic/script.py.mako
 """${message}
 
 Revision ID: ${up_revision}

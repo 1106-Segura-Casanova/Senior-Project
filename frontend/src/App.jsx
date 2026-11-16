@@ -1,5 +1,5 @@
 // Purpose: Connects everythng together
-
+// Recieved a lot through react.dev github but practically Chat gpt
 import { useState, useEffect } from "react";
 
 import {
